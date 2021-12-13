@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const CardDetails = () => {
+const CardDetails = props => {
+  const { path, page } = props;
   let { id } = useParams();
   let api = `https://rickandmortyapi.com/api/character/${id}`;
   let [fetchedData, setFetchedData] = useState('');
@@ -47,6 +49,9 @@ const CardDetails = () => {
             <span className='fw-bold'>{'Origin: '}</span>
             {origin?.name}
           </div>
+          <Link to={`${path}`}>
+            <h4 className='d-flex justify-content-center mt-4'>{`Back to ${page}`}</h4>
+          </Link>
         </div>
       </div>
     </div>
